@@ -485,3 +485,32 @@ svg{ display:block; }
 
 /* Large tap targets baseline */
 button, .topping, .gallery-card, .balloon{ min-width:44px; min-height:44px; }
+/* Scroll Hint Badge */
+.scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--c-lavender-deep);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--glass-border);
+  padding: 6px 14px;
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  margin-bottom: 8px;
+  animation: scrollBounce 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+/* Hide scroll hint on larger screens where everything fits easily */
+@media (min-height: 750px) {
+  .scroll-hint {
+    display: none;
+  }
+}
