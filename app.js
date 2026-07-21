@@ -23,7 +23,7 @@ const BALLOON_WISHES = [
   "May your year be filled with tiny joys and big laughs.",
   "You deserve every good thing coming your way.",
   "Here's to more adventures and less overthinking.",
-  "Here's to replacing heartbreak with something worth smiling about.",
+     "Hope your life keeps the Happiness & romance and leaves the heartbreak to the novels.",
   "Wishing you brighter days, even when life gets a little cloudy.",
 ];
 
