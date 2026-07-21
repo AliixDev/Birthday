@@ -508,9 +508,19 @@ function initGlobalInteractions() {
 function initSplash() {
   BgParticles.init();
   ScreenManager.buildDots();
-  setTimeout(() => {
+  
+  const timer = setTimeout(() => {
     ScreenManager.go("screen-welcome");
-  }, 2200);
+  }, 800);
+
+  // Allow tapping anywhere on the splash screen to skip right away
+  const splashScreen = $("#screen-splash");
+  if (splashScreen) {
+    splashScreen.addEventListener("click", () => {
+      clearTimeout(timer);
+      ScreenManager.go("screen-welcome");
+    }, { once: true });
+  }
 }
 
 /* ---------------------------------------------------------------------
