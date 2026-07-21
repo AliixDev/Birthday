@@ -34,7 +34,7 @@ const GALLERY_WISHES = [
 
 ];
 
-const GIFT_FIRST_WISH = "Happy birthday. May today be as wonderful as your favorite novel.✨";
+const GIFT_FIRST_WISH = "Happy birthday. May next chapter of your life story be gentler than the ones you've cried over in your novels.";
 
 const TOPPINGS = [
   { id: "candle", icon: "🕯️", label: "Candle" },
