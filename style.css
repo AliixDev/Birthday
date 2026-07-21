@@ -330,6 +330,11 @@ svg{ display:block; }
 }
 
 /* ===================== CAKE DECORATION ===================== */
+
+#screen-cake {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
 .cake-workspace {
   width: 100%;
   max-width: 520px;
