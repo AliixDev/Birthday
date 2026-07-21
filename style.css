@@ -330,7 +330,15 @@ svg{ display:block; }
 }
 
 /* ===================== CAKE DECORATION ===================== */
-.cake-workspace{ width:100%; max-width:520px; display:flex; flex-direction:column; align-items:center; gap:18px; flex:1; min-height:0; }
+.cake-workspace {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0; /* Prevents overflow overlap on short screens */
+}
 .cake-dropzone{
   position:relative; width:100%; max-width:320px; aspect-ratio: 300/220;
   touch-action:none;
@@ -355,7 +363,13 @@ svg{ display:block; }
 }
 .topping:active{ cursor:grabbing; transform: scale(1.12); }
 .dropped-topping{ position:absolute; font-size:30px; transform: translate(-50%,-50%); touch-action:none; cursor:grab; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15)); }
-.cake-finish-btn{ margin-top:16px; }
+.cake-finish-btn {
+  margin-top: 16px;
+  position: relative;
+  z-index: 10;          /* Ensures it sits above floating touch elements */
+  pointer-events: auto; /* Guarantees tap capability on Android touchscreens */
+  flex-shrink: 0;
+}
 
 /* ===================== CATCH GAME ===================== */
 .catch-hud{ display:flex; gap:10px; margin-bottom:12px; }
