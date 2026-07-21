@@ -537,25 +537,7 @@ function initGiftBox() {
   const burst = createBurstEngine(burstCanvas);
   let opened = false;
 
- ScreenManager.onEnter("screen-cake", () => {
-  if (built) return;
-  built = true;
-  buildTray();
 
-  // Hide scroll reminder once user scrolls down
-  const cakeScreen = $("#screen-cake");
-  const scrollHint = $("#cake-scroll-hint");
-  if (cakeScreen && scrollHint) {
-    cakeScreen.addEventListener("scroll", () => {
-      if (cakeScreen.scrollTop > 20) {
-        scrollHint.style.opacity = "0";
-        scrollHint.style.transition = "opacity 0.3s ease";
-      } else {
-        scrollHint.style.opacity = "1";
-      }
-    }, { passive: true });
-  }
-});
 
   box.addEventListener("click", () => {
     if (opened) return;
