@@ -508,19 +508,9 @@ function initGlobalInteractions() {
 function initSplash() {
   BgParticles.init();
   ScreenManager.buildDots();
-  
-  const timer = setTimeout(() => {
+  setTimeout(() => {
     ScreenManager.go("screen-welcome");
-  }, 800);
-
-  // Allow tapping anywhere on the splash screen to skip right away
-  const splashScreen = $("#screen-splash");
-  if (splashScreen) {
-    splashScreen.addEventListener("click", () => {
-      clearTimeout(timer);
-      ScreenManager.go("screen-welcome");
-    }, { once: true });
-  }
+  }, 2200);
 }
 
 /* ---------------------------------------------------------------------
@@ -718,18 +708,16 @@ function initCake() {
         ghost.style.top = ev.clientY + "px";
       };
      // In app.js -> attachDrag function update:
-// In app.js -> inside attachDrag(el, isPlaced)
 const up = (ev) => {
   document.removeEventListener("pointermove", move);
   document.removeEventListener("pointerup", up);
-  document.removeEventListener("pointercancel", up); // Fixes stuck touches on Android
-
+  document.removeEventListener("pointercancel", up); // Added to release touch lock on Android
   ghost.remove();
   if (isPlaced) el.style.opacity = "1";
   
   const dzRect = dropzone.getBoundingClientRect();
   const inside = ev.clientX >= dzRect.left && ev.clientX <= dzRect.right &&
-                 ev.clientY >= dzRect.top && ev.clientY <= dzRect.bottom;
+                  ev.clientY >= dzRect.top && ev.clientY <= dzRect.bottom;
   if (inside) {
     const xPct = ((ev.clientX - dzRect.left) / dzRect.width) * 100;
     const yPct = ((ev.clientY - dzRect.top) / dzRect.height) * 100;
@@ -743,10 +731,10 @@ const up = (ev) => {
     el.remove();
   }
 };
-
-document.addEventListener("pointermove", move);
-document.addEventListener("pointerup", up, { once: true });
-document.addEventListener("pointercancel", up, { once: true }); // Catch gesture cancellations
+      document.addEventListener("pointermove", move);
+      document.addEventListener("pointerup", up, { once: true });
+    });
+  }
 
   function placeTopping(icon, xPct, yPct) {
     const el = document.createElement("div");
