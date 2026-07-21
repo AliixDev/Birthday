@@ -31,23 +31,7 @@ const GALLERY_WISHES = [
   "You have this quiet way of making people feel comfortable around you. Don't ever lose that.",
   "The world genuinely feels a little better with you in it.",
   "You've grown so much this past year, even on the days it didn't feel like it.",
-  "Your kindness doesn't go unnoticed, even when you think no one's looking.",
-  "You handle hard things with more grace than you give yourself credit for.",
-  "May you always remember how capable you really are.",
-  "You bring a kind of warmth into rooms that's hard to explain but easy to feel.",
-  "Here's to the version of you that's still figuring things out — she's doing great.",
-  "You deserve rest as much as you deserve celebration.",
-  "The people who know you are lucky to know you.",
-  "You've made it through every hard day so far. That alone is worth celebrating.",
-  "May you keep choosing yourself, even on the busy days.",
-  "Your laugh is genuinely one of the best sounds.",
-  "You make hard days lighter just by being around.",
-  "Don't forget how far you've come, even when today feels ordinary.",
-  "You're allowed to be proud of yourself today, and every day.",
-  "May this next year be kinder to you than the last.",
-  "You're doing better than you think you are.",
-  "Here's to more moments that make you feel completely yourself.",
-  "Happy birthday to someone who deserves way more credit than she gives herself.",
+
 ];
 
 const GIFT_FIRST_WISH = "Happy birthday. Here's to a year that treats you exactly as well as you deserve.";
