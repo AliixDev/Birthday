@@ -577,7 +577,11 @@ function initBalloons() {
     if (built) return;
     built = true;
     buildBalloons();
-    setTimeout(() => continueBtn.classList.add("show"), 1200);
+    // Show the button after 1.2 seconds so the user can move on whenever they want
+    setTimeout(() => {
+      continueBtn.classList.remove("hidden");
+      continueBtn.classList.add("show");
+    }, 1200);
   });
 
   function buildBalloons() {
@@ -613,7 +617,10 @@ function initBalloons() {
     countLabel.textContent = Math.max(0, BALLOON_WISHES.length - popped);
     showWishModal("wish popped", b.dataset.wish);
     setTimeout(() => b.remove(), 320);
-    if (popped >= BALLOON_WISHES.length) continueBtn.classList.add("show");
+    
+    // Ensure button is shown when balloons are popped
+    continueBtn.classList.remove("hidden");
+    continueBtn.classList.add("show");
   }
 
   let confettiCanvas, confettiBurst;
@@ -633,7 +640,6 @@ function initBalloons() {
 
   continueBtn.addEventListener("click", () => ScreenManager.go("screen-cake"));
 }
-
 function showWishModal(label, text) {
   const backdrop = $("#wish-modal-backdrop");
   $("#wish-modal-label").textContent = label;
