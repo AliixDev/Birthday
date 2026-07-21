@@ -334,16 +334,6 @@ svg{ display:block; }
 #screen-cake {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  justify-content: flex-start; /* Keeps top header anchored */
-}
-
-/* Hide scrollbar visually while keeping touch-scroll functional */
-#screen-cake::-webkit-scrollbar {
-  display: none;
-}
-#screen-cake {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
 }
 .cake-workspace {
   width: 100%;
@@ -351,8 +341,8 @@ svg{ display:block; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
-  flex-shrink: 0;
+  gap: 18px;
+  flex-shrink: 0; /* Prevents overflow overlap on short screens */
 }
 .cake-dropzone{
   position:relative; width:100%; max-width:320px; aspect-ratio: 300/220;
@@ -380,10 +370,9 @@ svg{ display:block; }
 .dropped-topping{ position:absolute; font-size:30px; transform: translate(-50%,-50%); touch-action:none; cursor:grab; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15)); }
 .cake-finish-btn {
   margin-top: 16px;
-  margin-bottom: 20px;
   position: relative;
-  z-index: 10;
-  pointer-events: auto;
+  z-index: 10;          /* Ensures it sits above floating touch elements */
+  pointer-events: auto; /* Guarantees tap capability on Android touchscreens */
   flex-shrink: 0;
 }
 
