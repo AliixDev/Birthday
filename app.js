@@ -707,27 +707,30 @@ function initCake() {
         ghost.style.left = ev.clientX + "px";
         ghost.style.top = ev.clientY + "px";
       };
-      const up = (ev) => {
-        document.removeEventListener("pointermove", move);
-        document.removeEventListener("pointerup", up);
-        ghost.remove();
-        if (isPlaced) el.style.opacity = "1";
-        const dzRect = dropzone.getBoundingClientRect();
-        const inside = ev.clientX >= dzRect.left && ev.clientX <= dzRect.right &&
-                        ev.clientY >= dzRect.top && ev.clientY <= dzRect.bottom;
-        if (inside) {
-          const xPct = ((ev.clientX - dzRect.left) / dzRect.width) * 100;
-          const yPct = ((ev.clientY - dzRect.top) / dzRect.height) * 100;
-          if (isPlaced) {
-            el.style.left = xPct + "%";
-            el.style.top = yPct + "%";
-          } else {
-            placeTopping(icon, xPct, yPct);
-          }
-        } else if (isPlaced) {
-          el.remove();
-        }
-      };
+     // In app.js -> attachDrag function update:
+const up = (ev) => {
+  document.removeEventListener("pointermove", move);
+  document.removeEventListener("pointerup", up);
+  document.removeEventListener("pointercancel", up); // Added to release touch lock on Android
+  ghost.remove();
+  if (isPlaced) el.style.opacity = "1";
+  
+  const dzRect = dropzone.getBoundingClientRect();
+  const inside = ev.clientX >= dzRect.left && ev.clientX <= dzRect.right &&
+                  ev.clientY >= dzRect.top && ev.clientY <= dzRect.bottom;
+  if (inside) {
+    const xPct = ((ev.clientX - dzRect.left) / dzRect.width) * 100;
+    const yPct = ((ev.clientY - dzRect.top) / dzRect.height) * 100;
+    if (isPlaced) {
+      el.style.left = xPct + "%";
+      el.style.top = yPct + "%";
+    } else {
+      placeTopping(icon, xPct, yPct);
+    }
+  } else if (isPlaced) {
+    el.remove();
+  }
+};
       document.addEventListener("pointermove", move);
       document.addEventListener("pointerup", up, { once: true });
     });
