@@ -20,7 +20,7 @@ const prefersReducedMotion = CONFIG.REDUCED_MOTION;
    1. CONTENT — wishes, messages
 --------------------------------------------------------------------- */
 const BALLOON_WISHES = [
-  "May your year be filled with tiny joys and big laughs.",
+  "May your story have fewer plot twists and more happy moments.",
   "You deserve every good thing coming your way.",
   "Here's to more adventures and less overthinking.",
      "Hope your life keeps the Happiness & romance and leaves the heartbreak to the novels.",
