@@ -791,6 +791,31 @@ function initCatchGame() {
   const GOOD = ["🎁", "🎈", "🧁", "🍰", "⭐"];
   const BAD = ["💣", "🧨"];
 
+  // Completely stops game loops and timers
+  function stopGame() {
+    running = false;
+    clearInterval(spawnTimer);
+    clearInterval(countdownTimer);
+    cancelAnimationFrame(raf);
+  }
+
+  // End game logic
+  function endGame() {
+    stopGame();
+    const best = Math.max(score, getHighScore());
+    setHighScore(best);
+    finalScoreLbl.textContent = "Score: " + score;
+    highScoreLbl.textContent = "Best: " + best;
+    resultCard.classList.remove("hidden");
+    AudioEngine.sfxChime();
+  }
+
+  // Skip game at any point (before starting or mid-game)
+  function skipToNext() {
+    stopGame();
+    ScreenManager.go("screen-gallery");
+  }
+
   function fit() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     const rect = canvas.getBoundingClientRect();
@@ -799,8 +824,9 @@ function initCatchGame() {
   }
   window.addEventListener("resize", fit);
 
-  ScreenManager.onEnter("screen-catch", () => {
+ ScreenManager.onEnter("screen-catch", () => {
     fit();
+    stopGame();   // Ensure no leftover loops are running
     resetState();
     highScoreLbl.textContent = "Best: " + getHighScore();
   });
@@ -911,22 +937,15 @@ function initCatchGame() {
     scoreLbl.textContent = String(score);
   });
 
-  function endGame() {
-    running = false;
-    clearInterval(spawnTimer);
-    clearInterval(countdownTimer);
-    cancelAnimationFrame(raf);
-    const best = Math.max(score, getHighScore());
-    setHighScore(best);
-    finalScoreLbl.textContent = "Score: " + score;
-    highScoreLbl.textContent = "Best: " + best;
-    resultCard.classList.remove("hidden");
-    AudioEngine.sfxChime();
-  }
-
+  // Event Listeners (Placed cleanly at the end)
   startBtn.addEventListener("click", startGame);
   $("#btn-catch-retry").addEventListener("click", startGame);
-  $("#btn-after-catch").addEventListener("click", () => ScreenManager.go("screen-gallery"));
+
+  const btnAfterCatch = $("#btn-after-catch");
+  const btnAfterGame = $("#btn-after-game");
+
+  if (btnAfterCatch) btnAfterCatch.addEventListener("click", skipToNext);
+  if (btnAfterGame) btnAfterGame.addEventListener("click", skipToNext);
 }
 
 /* ---------------------------------------------------------------------
