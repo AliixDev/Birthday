@@ -23,18 +23,18 @@ const BALLOON_WISHES = [
   "May your year be filled with tiny joys and big laughs.",
   "You deserve every good thing coming your way.",
   "Here's to more adventures and less overthinking.",
-  "May today be as wonderful as your favorite playlist on shuffle.",
-  "Wishing you sunshine on your cloudiest days.",
+  "Here's to replacing heartbreak with something worth smiling about.",
+  "Wishing you brighter days, even when life gets a little cloudy.",
 ];
 
 const GALLERY_WISHES = [
-  "You have this quiet way of making people feel comfortable around you. Don't ever lose that.",
+  "Nimra you have this quiet way of making people feel comfortable around you. Don't ever lose that.",
   "The world genuinely feels a little better with you in it.",
-  "You've grown so much this past year, even on the days it didn't feel like it.",
+  "Hope this year brings you more reasons to smile and celebrate yourself.",
 
 ];
 
-const GIFT_FIRST_WISH = "Happy birthday. Here's to a year that treats you exactly as well as you deserve.";
+const GIFT_FIRST_WISH = "Happy birthday. May today be as wonderful as your favorite novel.✨";
 
 const TOPPINGS = [
   { id: "candle", icon: "🕯️", label: "Candle" },
